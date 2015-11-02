@@ -229,3 +229,19 @@
   229  git init
   230  apt-get install git
   231  history > history
+  232  apt-get install git
+  233  git init
+  234  apt-get install git
+  235  git commit -m "First commit"
+  236  git add 8
+  237  git add *
+  238  git commit -m "First commit"
+  239  git remote add origin git@github.com:Jagsir/wreckj.bench.git
+  240  git remote -v
+  241  git push 
+  242  git pull --all
+  243  git push 
+  244  git pull --all
+  245  git pull 
+  246  git push 
+  247  history > history 
