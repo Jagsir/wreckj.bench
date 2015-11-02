@@ -1,0 +1,4 @@
+[random-read]
+rw=randread
+size=28672m
+directory=fio-testing/data

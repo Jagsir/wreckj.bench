@@ -1,0 +1,231 @@
+    1  vi /etc/ssh/sshd_config 
+    2  restart ssh
+    3  servce ssh restart
+    4  service ssh restart
+    5  netstat -an | grep 8080
+    6  apt-get update -i
+    7  apt-get update -f
+    8  apt-get update 
+    9  df -h
+   10  fdisk -l
+   11  fdisk /dev/xvdb
+   12  pwd
+   13  ls -al
+   14  mkfs.xfs /dev/xvdb1
+   15  apt-get install xfsprogs
+   16  mkdir /dev1
+   17  chown -R ubuntu:ubuntu /dev1
+   18  cd /dev1
+   19  pwd
+   20  ls -al
+   21  pwd
+   22  apt-get install fio
+   23  vi random-read-test.fio
+   24  cat random-read-test.fio
+   25  mkdir -p /dev1/fio-testing/data
+   26  fio random-read-test.fio 
+   27  vi random-read-test-aio.fio 
+   28  apt-get install libaio-dev
+   29  fio random-read-test-aio.fio 
+   30  vi random-read-test-aio.fio 
+   31  cat random-read-test.fio 
+   32  vi random-read-test-aio.fio 
+   33  fio random-read-test-aio.fio 
+   34  vi four-threads-randio.fio
+   35  fio four-threads-randio.fio 
+   36  mkdir tmpfs
+   37  mount -t tmpfs -o size=8192m tmpfs /dev1/tmpfs/
+   38  mkdir ramfs
+   39  mount -t ramfs -o size=8192m ramfs /dev1/ramfs/
+   40  df -h
+   41  ls -la
+   42  cp *fio ramfs/
+   43  cp *fio tmpfs/
+   44  cd tmpfs/
+   45  ls -al
+   46  vi random-read-test.fio 
+   47  sed -i 's/dev1/dev1\/tmpfs/g' *fio
+   48  cat random-read-test.fio 
+   49  mkdir -p /dev1/tmpfs/fio-testing/data
+   50  cd ../
+   51  cd ramfs/
+   52  sed -i 's/dev1/dev1\/ramfs/g' *fio
+   53  mkdir -p /dev1/ramfs/fio-testing/data
+   54  fio random-read-test.fio 
+   55  vi random-read-test.fio 
+   56  fio random-read-test-aio.fio 
+   57  fio four-threads-randio.fio 
+   58  cd ../tmpfs/
+   59  fio random-read-test.fio 
+   60  top
+   61  sed -i 's/4096m/28672m/g' *fio
+   62  fio random-read-test.fio 
+   63  df -h
+   64  umount /dev1/tmpfs
+   65  umount /dev1/tmpfscd ../
+   66  cd ../
+   67  umount /dev1/tmpfs
+   68  umount /dev1/ramfs
+   69  mount -t ramfs -o size=28672m ramfs /dev1/ramfs/
+   70  cd ramfs/
+   71  ls -al
+   72  cd ../
+   73  cp *fio ramfs/
+   74  cd ramfs/
+   75  ls
+   76  sed -i 's/dev1/dev1\/ramfs/g' *fio
+   77  vi random-read-test.fio 
+   78  mkdir -p /dev1/ramfs/fio-testing/data
+   79  sed -i 's/4096m/28672m/g' *fio
+   80  fio random-read-test.fio 
+   81  ls
+   82  mkdir ../ramfs.fio
+   83  cp *fio ../ramfs.fio/
+   84  ls -al
+   85  cd ../
+   86  ls -al
+   87  mkdir tmpfs.fio
+   88  cp ramfs.fio/* tmpfs.fio/
+   89  cd tmpfs.fio/
+   90  sed -i 's/ramfs/tmpfs/g' *fio
+   91  less random-read-test.fio 
+   92  less random-read-test-aio.fio 
+   93  less four-threads-randio.fio 
+   94  cd ../
+   95  umount /dev1/ramfs
+   96  mount -t tmpfs -o size=28672m tmpfs /dev1/tmpfs/
+   97  cd tmpfs
+   98  ls -al
+   99  mkdir -p /dev1/tmpfs/fio-testing/data
+  100  fio random-read-test.fio 
+  101  cp ../tmpfs.fio/*fio .
+  102  ls -al
+  103  fio random-read-test.fio 
+  104  cd ../
+  105  umount /dev1/tmpfs /dev1/ramfs
+  106  mount
+  107  df -h
+  108  top
+  109  mount -t tmpfs -o size=28672m tmpfs /dev1/tmpfs/
+  110  cp tmpfs.fio/*fio tmpfs
+  111  cd tmpfs
+  112  ls -al
+  113  mkdir -p /dev1/tmpfs/fio-testing/data
+  114  cat random-read-test
+  115  cat random-read-test.fio 
+  116  fio random-read-test.fio 
+  117  df -h
+  118  top
+  119  fio random-read-test.fio 
+  120  vi random-read-test.fio 
+  121  fio random-read-test.fio 
+  122  fio four-threads-randio.fio 
+  123  vi four-threads-randio.fio 
+  124  ls -al
+  125  rm fio-testing/data/*
+  126  vi four-threads-randio.fio 
+  127  fio four-threads-randio.fio 
+  128  vi four-threads-randio.fio 
+  129  rm fio-testing/data/*
+  130  vi four-threads-randio.fio 
+  131  fio four-threads-randio.fio 
+  132  cd ../
+  133  pwd
+  134  ls -al
+  135  rm tmpfs/fio-testing/data/*
+  136  rm ramfs/fio-testing/data/*
+  137  ls -la
+  138  du -sh
+  139  rm tmpfs/fio-testing/data/*
+  140  rm ramfs/fio-testing/data/*
+  141  rm fio-testing/data/*
+  142  du -sh
+  143  ls -la
+  144  ssh-keygen
+  145  cd ~/.ssh/
+  146  ls -la
+  147  chmod 400 id_rsa*
+  148  ls -la
+  149  cd -
+  150  ls -la
+  151  mkdir secureshell
+  152  cp -r ~/.ssh/* .
+  153  mv id_rsa* secureshell/
+  154  mv authorized_keys secureshell/
+  155  rm secureshell/authorized_keys 
+  156  ls -la secureshell/
+  157  ls -al
+  158  mkdir fio
+  159  mv * fio
+  160  ls -al
+  161  umount /dev1/tmpfs /dev1/ramfs
+  162  ls -al
+  163  mv tmpfs fio/
+  164  ls -al
+  165  cd fio/
+  166  ls -al
+  167  mkdir ssd 
+  168  mv fio-testing/ ssd/
+  169  mv *fio ssd/
+  170  ls -al
+  171  cd ramfs/
+  172  ls a-l
+  173  ls -al
+  174  cd ../
+  175  ls -al
+  176  mv ssd/ramfs.fio .
+  177  mv ssd/tmpfs.fio/fs.fio .
+  178  mv ssd/tmpfs.fio .
+  179  ls -al
+  180  rm ramfs
+  181  ls -l ramfs 
+  182  rm -rf ramfs 
+  183  rm -rf tmpfs
+  184  ls -al
+  185  cd ramfs.fio
+  186  ls -al
+  187  mkdir -p fio-testing/data
+  188  cd ../
+  189  cd ssd/
+  190  ls -al
+  191  ls fio-testing/data/
+  192  cd ../
+  193  cd tmpfs.fio/
+  194  ls -al
+  195  mkdir -p fio-testing/data
+  196  ls -al
+  197  pwd
+  198  vi random-read-test.fio 
+  199  vi random-read-test-aio.fio 
+  200  vi four-threads-randio.fio 
+  201  pwd
+  202  ls -al
+  203  cd ../
+  204  cd ssd/
+  205  ls -al
+  206  vi random-read-test.fio 
+  207  fio random-read-test.fio 
+  208  pwd
+  209  ls ../secureshell/
+  210  cat ../secureshell/id_rsa.pub
+  211  vi ../secureshell/id_rsa
+  212  ls -al
+  213  rm -rf fio-testing/data/*
+  214  ls -al
+  215  cd ../
+  216  ls -al
+  217  ssh ssh.github.com
+  218  ssh -p 443 ssh.github.com
+  219  cat ~/.ssh/id_rsa.pub 
+  220  ssh ssh.github.com
+  221  ssh jagsir@ssh.github.com
+  222  ssh wreckj@ssh.github.com
+  223  ssh Jagsir@ssh.github.com
+  224  cat ~/.ssh/id_rsa
+  225  ssh git@github.com
+  226  ssh -p 443 git@ssh.github.com
+  227  ls -al
+  228  du -sh *
+  229  git init
+  230  apt-get install git
+  231  history > history
